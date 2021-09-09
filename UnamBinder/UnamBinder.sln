@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{73F117BF-868D-4F93-9379-AC56F44E8EFE}") = "UnamBinder", "UnamBinder.csproj", "{394D99B3-72F5-472A-B855-3CE3CFC606D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{394D99B3-72F5-472A-B855-3CE3CFC606D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394D99B3-72F5-472A-B855-3CE3CFC606D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394D99B3-72F5-472A-B855-3CE3CFC606D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394D99B3-72F5-472A-B855-3CE3CFC606D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CB2B73C-E232-4DBC-AC2B-EFDC3EB5D261}
+	EndGlobalSection
+EndGlobal
