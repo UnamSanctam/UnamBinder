@@ -1,7 +1,7 @@
 
 <img src="https://github.com/UnamSanctam/UnamBinder/blob/master/UnamBinder.png?raw=true">
 
-# UnamBinder 1.1.0 - A free silent native file binder
+# UnamBinder 1.1.1 - A free silent native file binder
 
 A free silent (hidden) open-source native file binder.
 
@@ -24,6 +24,8 @@ You can find the wiki [here](https://github.com/UnamSanctam/UnamBinder/wiki) or 
 
 ## Changelog
 
+### v1.1.1 (12/09/2021)
+* Worked around windres limitation of not supporting spaces in file paths
 ### v1.1.0 (12/09/2021)
 * Added new custom minimal MinGW64 windres resource compiler
 * Added new Icon and Assembly Data options using the new resource compiler
