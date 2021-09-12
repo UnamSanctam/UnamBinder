@@ -46,7 +46,7 @@
             // 
             // mephTheme1
             // 
-            this.mephTheme1.AccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
             this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.mephTheme1.Controls.Add(this.label5);
@@ -76,7 +76,7 @@
             this.label5.ForeColor = System.Drawing.Color.Gray;
             this.label5.Location = new System.Drawing.Point(15, 271);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 25);
+            this.label5.Size = new System.Drawing.Size(140, 17);
             this.label5.TabIndex = 20;
             this.label5.Text = "Hide Console Window:";
             // 
@@ -109,7 +109,7 @@
             this.label4.ForeColor = System.Drawing.Color.Gray;
             this.label4.Location = new System.Drawing.Point(15, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 25);
+            this.label4.Size = new System.Drawing.Size(62, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Filename:";
             // 
@@ -135,7 +135,7 @@
             this.label3.ForeColor = System.Drawing.Color.Gray;
             this.label3.Location = new System.Drawing.Point(15, 241);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 25);
+            this.label3.Size = new System.Drawing.Size(78, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Execute File:";
             // 
@@ -157,7 +157,7 @@
             this.label2.ForeColor = System.Drawing.Color.Gray;
             this.label2.Location = new System.Drawing.Point(15, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 25);
+            this.label2.Size = new System.Drawing.Size(91, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Drop location:";
             // 
@@ -190,7 +190,7 @@
             this.label1.ForeColor = System.Drawing.Color.Gray;
             this.label1.Location = new System.Drawing.Point(15, 122);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 25);
+            this.label1.Size = new System.Drawing.Size(76, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "FIle to bind:";
             // 

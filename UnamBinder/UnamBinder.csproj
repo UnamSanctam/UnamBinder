@@ -81,8 +81,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vanity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vanity.designer.cs">
+      <DependentUpon>Vanity.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vanity.resx">
+      <DependentUpon>Vanity.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Resources\manifest.o" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,11 +117,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\administrator.manifest" />
+    <None Include="Resources\MinGW64.zip" />
     <None Include="Resources\tinycc.zip" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\microsoft-admin.png" />
     <None Include="Resources\Program.c" />
+    <None Include="Resources\resource.rc" />
     <Content Include="unam.ico" />
   </ItemGroup>
   <ItemGroup>

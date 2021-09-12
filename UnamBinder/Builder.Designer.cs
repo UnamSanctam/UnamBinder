@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Builder));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mephTheme1 = new MephTheme();
+            this.btnVanity = new MephButton();
             this.imageAdmin1 = new System.Windows.Forms.PictureBox();
             this.linkGitHub = new System.Windows.Forms.LinkLabel();
             this.btnBuild = new MephButton();
@@ -59,8 +60,10 @@
             // 
             // mephTheme1
             // 
-            this.mephTheme1.AccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
+            this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.mephTheme1.Controls.Add(this.btnVanity);
             this.mephTheme1.Controls.Add(this.imageAdmin1);
             this.mephTheme1.Controls.Add(this.linkGitHub);
             this.mephTheme1.Controls.Add(this.btnBuild);
@@ -71,7 +74,6 @@
             this.mephTheme1.Controls.Add(this.btnAdd);
             this.mephTheme1.Controls.Add(this.label1);
             this.mephTheme1.Controls.Add(this.listFiles);
-            this.mephTheme1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mephTheme1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mephTheme1.Location = new System.Drawing.Point(0, 0);
             this.mephTheme1.Margin = new System.Windows.Forms.Padding(4);
@@ -79,7 +81,18 @@
             this.mephTheme1.Size = new System.Drawing.Size(348, 327);
             this.mephTheme1.SubHeader = "Created by Unam Sanctam";
             this.mephTheme1.TabIndex = 0;
-            this.mephTheme1.Text = "Unam Binder 1.0.0";
+            this.mephTheme1.Text = "Unam Binder 1.1.0";
+            // 
+            // btnVanity
+            // 
+            this.btnVanity.BackColor = System.Drawing.Color.Transparent;
+            this.btnVanity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.btnVanity.Location = new System.Drawing.Point(138, 279);
+            this.btnVanity.Name = "btnVanity";
+            this.btnVanity.Size = new System.Drawing.Size(186, 23);
+            this.btnVanity.TabIndex = 14;
+            this.btnVanity.Text = "Change Icon/Assembly";
+            this.btnVanity.Click += new System.EventHandler(this.btnVanity_Click);
             // 
             // imageAdmin1
             // 
@@ -206,7 +219,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Builder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Unam Binder 1.0.0";
+            this.Text = "Unam Binder 1.1.0";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mephTheme1.ResumeLayout(false);
@@ -230,6 +243,7 @@
         private System.Windows.Forms.LinkLabel linkGitHub;
         public MephListBox listFiles;
         private System.Windows.Forms.PictureBox imageAdmin1;
+        private MephButton btnVanity;
     }
 }
 

@@ -1,9 +1,9 @@
 
 <img src="https://github.com/UnamSanctam/UnamBinder/blob/master/UnamBinder.png?raw=true">
 
-# UnamBinder 1.0.0 - A free silent native file binder
+# UnamBinder 1.1.0 - A free silent native file binder
 
-A free silent (hidden) open source native file binder.
+A free silent (hidden) open-source native file binder.
 
 ## Main Features
 
@@ -12,6 +12,7 @@ A free silent (hidden) open source native file binder.
 * Multiple files - Supports binding any amount of files
 * Compatible - Supports all tested Windows version (Windows 7 to Windows 10) and all file types
 * Windows Defender exclusions - Can add exclusions into Windows Defender to ignore any detections from the bound files
+* Icon/Assembly - Supports adding an Icon and/or Assembly Data to the built file
 
 ## Downloads
 
@@ -23,6 +24,12 @@ You can find the wiki [here](https://github.com/UnamSanctam/UnamBinder/wiki) or 
 
 ## Changelog
 
+### v1.1.0 (12/09/2021)
+* Added new custom minimal MinGW64 windres resource compiler
+* Added new Icon and Assembly Data options using the new resource compiler
+* Increased key complexity to avoid general key scans
+* Fixed general small bugs
+* Optimized code
 ### v1.0.0 (09/09/2021)
 * Initial release
 
