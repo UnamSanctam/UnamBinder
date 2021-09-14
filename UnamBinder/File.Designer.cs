@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(File));
             this.mephTheme1 = new MephTheme();
-            this.label5 = new System.Windows.Forms.Label();
-            this.toggleHideWindow = new MephToggleSwitch();
             this.btnIconBrowse = new MephButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFilename = new MephTextBox();
@@ -47,10 +45,7 @@
             // mephTheme1
             // 
             this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
-            this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.mephTheme1.Controls.Add(this.label5);
-            this.mephTheme1.Controls.Add(this.toggleHideWindow);
             this.mephTheme1.Controls.Add(this.btnIconBrowse);
             this.mephTheme1.Controls.Add(this.label4);
             this.mephTheme1.Controls.Add(this.txtFilename);
@@ -60,36 +55,17 @@
             this.mephTheme1.Controls.Add(this.comboDropLocation);
             this.mephTheme1.Controls.Add(this.label1);
             this.mephTheme1.Controls.Add(this.txtBindfile);
+            this.mephTheme1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mephTheme1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mephTheme1.Location = new System.Drawing.Point(0, 0);
             this.mephTheme1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mephTheme1.MaximumSize = new System.Drawing.Size(253, 276);
+            this.mephTheme1.MinimumSize = new System.Drawing.Size(253, 276);
             this.mephTheme1.Name = "mephTheme1";
-            this.mephTheme1.Size = new System.Drawing.Size(253, 309);
+            this.mephTheme1.Size = new System.Drawing.Size(253, 276);
             this.mephTheme1.SubHeader = "File to bind";
             this.mephTheme1.TabIndex = 0;
             this.mephTheme1.Text = "Edit File";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(15, 271);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 17);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Hide Console Window:";
-            // 
-            // toggleHideWindow
-            // 
-            this.toggleHideWindow.BackColor = System.Drawing.Color.Transparent;
-            this.toggleHideWindow.Checked = false;
-            this.toggleHideWindow.ForeColor = System.Drawing.Color.Black;
-            this.toggleHideWindow.Location = new System.Drawing.Point(188, 268);
-            this.toggleHideWindow.Name = "toggleHideWindow";
-            this.toggleHideWindow.Size = new System.Drawing.Size(50, 24);
-            this.toggleHideWindow.TabIndex = 19;
-            this.toggleHideWindow.Text = "toggleHideWindow";
             // 
             // btnIconBrowse
             // 
@@ -133,7 +109,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(15, 241);
+            this.label3.Location = new System.Drawing.Point(15, 238);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 17);
             this.label3.TabIndex = 6;
@@ -144,7 +120,7 @@
             this.toggleExecute.BackColor = System.Drawing.Color.Transparent;
             this.toggleExecute.Checked = true;
             this.toggleExecute.ForeColor = System.Drawing.Color.Black;
-            this.toggleExecute.Location = new System.Drawing.Point(188, 238);
+            this.toggleExecute.Location = new System.Drawing.Point(188, 236);
             this.toggleExecute.Name = "toggleExecute";
             this.toggleExecute.Size = new System.Drawing.Size(50, 24);
             this.toggleExecute.TabIndex = 5;
@@ -212,13 +188,12 @@
             // File
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(253, 309);
+            this.ClientSize = new System.Drawing.Size(253, 276);
             this.Controls.Add(this.mephTheme1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(201, 283);
             this.Name = "File";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit File";
@@ -242,7 +217,5 @@
         public MephToggleSwitch toggleExecute;
         public MephComboBox comboDropLocation;
         private MephButton btnIconBrowse;
-        private System.Windows.Forms.Label label5;
-        public MephToggleSwitch toggleHideWindow;
     }
 }

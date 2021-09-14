@@ -75,6 +75,8 @@
             this.mephTheme1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mephTheme1.Location = new System.Drawing.Point(0, 0);
             this.mephTheme1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mephTheme1.MaximumSize = new System.Drawing.Size(556, 231);
+            this.mephTheme1.MinimumSize = new System.Drawing.Size(556, 231);
             this.mephTheme1.Name = "mephTheme1";
             this.mephTheme1.Size = new System.Drawing.Size(556, 231);
             this.mephTheme1.SubHeader = "";

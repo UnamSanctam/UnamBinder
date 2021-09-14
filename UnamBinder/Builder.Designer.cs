@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Builder));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mephTheme1 = new MephTheme();
+            this.txtError = new MephTextBox();
+            this.checkError = new MephCheckBox();
+            this.labelDelay = new System.Windows.Forms.Label();
+            this.txtDelay = new MephTextBox();
+            this.checkDelay = new MephCheckBox();
             this.btnVanity = new MephButton();
             this.imageAdmin1 = new System.Windows.Forms.PictureBox();
             this.linkGitHub = new System.Windows.Forms.LinkLabel();
@@ -61,8 +66,12 @@
             // mephTheme1
             // 
             this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
-            this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.mephTheme1.Controls.Add(this.txtError);
+            this.mephTheme1.Controls.Add(this.checkError);
+            this.mephTheme1.Controls.Add(this.labelDelay);
+            this.mephTheme1.Controls.Add(this.txtDelay);
+            this.mephTheme1.Controls.Add(this.checkDelay);
             this.mephTheme1.Controls.Add(this.btnVanity);
             this.mephTheme1.Controls.Add(this.imageAdmin1);
             this.mephTheme1.Controls.Add(this.linkGitHub);
@@ -74,20 +83,92 @@
             this.mephTheme1.Controls.Add(this.btnAdd);
             this.mephTheme1.Controls.Add(this.label1);
             this.mephTheme1.Controls.Add(this.listFiles);
+            this.mephTheme1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mephTheme1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mephTheme1.Location = new System.Drawing.Point(0, 0);
             this.mephTheme1.Margin = new System.Windows.Forms.Padding(4);
+            this.mephTheme1.MaximumSize = new System.Drawing.Size(348, 387);
+            this.mephTheme1.MinimumSize = new System.Drawing.Size(348, 387);
             this.mephTheme1.Name = "mephTheme1";
-            this.mephTheme1.Size = new System.Drawing.Size(348, 327);
+            this.mephTheme1.Size = new System.Drawing.Size(348, 387);
             this.mephTheme1.SubHeader = "Created by Unam Sanctam";
             this.mephTheme1.TabIndex = 0;
-            this.mephTheme1.Text = "Unam Binder 1.1.1";
+            this.mephTheme1.Text = "Unam Binder 1.2.0";
+            // 
+            // txtError
+            // 
+            this.txtError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtError.ForeColor = System.Drawing.Color.Silver;
+            this.txtError.Location = new System.Drawing.Point(138, 213);
+            this.txtError.MaxLength = 32767;
+            this.txtError.MultiLine = false;
+            this.txtError.Name = "txtError";
+            this.txtError.Size = new System.Drawing.Size(186, 24);
+            this.txtError.TabIndex = 19;
+            this.txtError.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtError.UseSystemPasswordChar = false;
+            this.txtError.Visible = false;
+            this.txtError.WordWrap = false;
+            // 
+            // checkError
+            // 
+            this.checkError.AccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.checkError.BackColor = System.Drawing.Color.Transparent;
+            this.checkError.Checked = false;
+            this.checkError.ForeColor = System.Drawing.Color.Black;
+            this.checkError.Location = new System.Drawing.Point(25, 213);
+            this.checkError.Name = "checkError";
+            this.checkError.Size = new System.Drawing.Size(107, 24);
+            this.checkError.TabIndex = 18;
+            this.checkError.Text = "Fake Error";
+            this.checkError.CheckedChanged += new MephCheckBox.CheckedChangedEventHandler(this.checkError_CheckedChanged);
+            // 
+            // labelDelay
+            // 
+            this.labelDelay.AutoSize = true;
+            this.labelDelay.BackColor = System.Drawing.Color.Transparent;
+            this.labelDelay.ForeColor = System.Drawing.Color.Gray;
+            this.labelDelay.Location = new System.Drawing.Point(167, 246);
+            this.labelDelay.Name = "labelDelay";
+            this.labelDelay.Size = new System.Drawing.Size(64, 17);
+            this.labelDelay.TabIndex = 17;
+            this.labelDelay.Text = "second(s)";
+            this.labelDelay.Visible = false;
+            // 
+            // txtDelay
+            // 
+            this.txtDelay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.txtDelay.ForeColor = System.Drawing.Color.Silver;
+            this.txtDelay.Location = new System.Drawing.Point(138, 243);
+            this.txtDelay.MaxLength = 32767;
+            this.txtDelay.MultiLine = false;
+            this.txtDelay.Name = "txtDelay";
+            this.txtDelay.Size = new System.Drawing.Size(30, 24);
+            this.txtDelay.TabIndex = 16;
+            this.txtDelay.Text = "0";
+            this.txtDelay.TextAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDelay.UseSystemPasswordChar = false;
+            this.txtDelay.Visible = false;
+            this.txtDelay.WordWrap = false;
+            // 
+            // checkDelay
+            // 
+            this.checkDelay.AccentColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.checkDelay.BackColor = System.Drawing.Color.Transparent;
+            this.checkDelay.Checked = false;
+            this.checkDelay.ForeColor = System.Drawing.Color.Black;
+            this.checkDelay.Location = new System.Drawing.Point(25, 243);
+            this.checkDelay.Name = "checkDelay";
+            this.checkDelay.Size = new System.Drawing.Size(107, 24);
+            this.checkDelay.TabIndex = 15;
+            this.checkDelay.Text = "Start Delay";
+            this.checkDelay.CheckedChanged += new MephCheckBox.CheckedChangedEventHandler(this.checkDelay_CheckedChanged);
             // 
             // btnVanity
             // 
             this.btnVanity.BackColor = System.Drawing.Color.Transparent;
             this.btnVanity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
-            this.btnVanity.Location = new System.Drawing.Point(138, 279);
+            this.btnVanity.Location = new System.Drawing.Point(138, 341);
             this.btnVanity.Name = "btnVanity";
             this.btnVanity.Size = new System.Drawing.Size(186, 23);
             this.btnVanity.TabIndex = 14;
@@ -98,7 +179,7 @@
             // 
             this.imageAdmin1.BackColor = System.Drawing.Color.Transparent;
             this.imageAdmin1.Image = global::UnamBinder.Properties.Resources.microsoft_admin;
-            this.imageAdmin1.Location = new System.Drawing.Point(284, 241);
+            this.imageAdmin1.Location = new System.Drawing.Point(284, 302);
             this.imageAdmin1.Name = "imageAdmin1";
             this.imageAdmin1.Size = new System.Drawing.Size(24, 24);
             this.imageAdmin1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -122,7 +203,7 @@
             // 
             this.btnBuild.BackColor = System.Drawing.Color.Transparent;
             this.btnBuild.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
-            this.btnBuild.Location = new System.Drawing.Point(25, 279);
+            this.btnBuild.Location = new System.Drawing.Point(25, 341);
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(75, 23);
             this.btnBuild.TabIndex = 8;
@@ -135,7 +216,7 @@
             this.checkWD.BackColor = System.Drawing.Color.Transparent;
             this.checkWD.Checked = false;
             this.checkWD.ForeColor = System.Drawing.Color.Gray;
-            this.checkWD.Location = new System.Drawing.Point(25, 242);
+            this.checkWD.Location = new System.Drawing.Point(25, 303);
             this.checkWD.Name = "checkWD";
             this.checkWD.Size = new System.Drawing.Size(269, 24);
             this.checkWD.TabIndex = 6;
@@ -147,7 +228,7 @@
             this.checkAdmin.BackColor = System.Drawing.Color.Transparent;
             this.checkAdmin.Checked = false;
             this.checkAdmin.ForeColor = System.Drawing.Color.Black;
-            this.checkAdmin.Location = new System.Drawing.Point(25, 212);
+            this.checkAdmin.Location = new System.Drawing.Point(25, 273);
             this.checkAdmin.Name = "checkAdmin";
             this.checkAdmin.Size = new System.Drawing.Size(250, 24);
             this.checkAdmin.TabIndex = 5;
@@ -211,7 +292,7 @@
             // Builder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(348, 327);
+            this.ClientSize = new System.Drawing.Size(348, 387);
             this.Controls.Add(this.mephTheme1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -219,7 +300,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Builder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Unam Binder 1.1.1";
+            this.Text = "Unam Binder 1.2.0";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mephTheme1.ResumeLayout(false);
@@ -244,6 +325,11 @@
         public MephListBox listFiles;
         private System.Windows.Forms.PictureBox imageAdmin1;
         private MephButton btnVanity;
+        private MephTextBox txtError;
+        private MephCheckBox checkError;
+        private System.Windows.Forms.Label labelDelay;
+        private MephTextBox txtDelay;
+        private MephCheckBox checkDelay;
     }
 }
 

@@ -32,11 +32,12 @@ namespace UnamBinder
         private void btnIconBrowse_Click(object sender, System.EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Exe Files (.exe)|*.exe|All Files (*.*)|*.*";
+            dialog.Filter = "All Files (*.*)|*.*";
             dialog.InitialDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 txtBindfile.Text = dialog.FileName;
+                txtFilename.Text = Path.GetFileName(dialog.FileName);
             }
         }
     }
