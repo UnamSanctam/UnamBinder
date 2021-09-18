@@ -66,6 +66,7 @@
             // mephTheme1
             // 
             this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
+            this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.mephTheme1.Controls.Add(this.txtError);
             this.mephTheme1.Controls.Add(this.checkError);
@@ -83,7 +84,6 @@
             this.mephTheme1.Controls.Add(this.btnAdd);
             this.mephTheme1.Controls.Add(this.label1);
             this.mephTheme1.Controls.Add(this.listFiles);
-            this.mephTheme1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mephTheme1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mephTheme1.Location = new System.Drawing.Point(0, 0);
             this.mephTheme1.Margin = new System.Windows.Forms.Padding(4);
@@ -93,7 +93,7 @@
             this.mephTheme1.Size = new System.Drawing.Size(348, 387);
             this.mephTheme1.SubHeader = "Created by Unam Sanctam";
             this.mephTheme1.TabIndex = 0;
-            this.mephTheme1.Text = "Unam Binder 1.2.0";
+            this.mephTheme1.Text = "Unam Binder 1.2.1";
             // 
             // txtError
             // 
@@ -300,7 +300,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Builder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Unam Binder 1.2.0";
+            this.Text = "Unam Binder 1.2.1";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.mephTheme1.ResumeLayout(false);

