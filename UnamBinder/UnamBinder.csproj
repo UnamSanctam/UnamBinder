@@ -54,6 +54,7 @@
     <ApplicationIcon>unam.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -67,40 +68,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="File.cs">
+    <Compile Include="Classes\FormSerializer.cs" />
+    <Compile Include="Forms\File.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="File.Designer.cs">
+    <Compile Include="Forms\File.Designer.cs">
       <DependentUpon>File.cs</DependentUpon>
     </Compile>
-    <Compile Include="Builder.cs">
+    <Compile Include="Forms\Builder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Builder.Designer.cs">
+    <Compile Include="Forms\Builder.Designer.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vanity.cs">
+    <Compile Include="Forms\Vanity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vanity.designer.cs">
+    <Compile Include="Forms\Vanity.designer.cs">
       <DependentUpon>Vanity.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Vanity.resx">
+    <None Include="Resources\Code\Program.cs" />
+    <EmbeddedResource Include="Forms\Vanity.resx">
       <DependentUpon>Vanity.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Theme.cs" />
-    <EmbeddedResource Include="File.resx">
+    <Compile Include="Classes\Theme.cs" />
+    <EmbeddedResource Include="Forms\File.resx">
       <DependentUpon>File.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder.resx">
+    <EmbeddedResource Include="Forms\Builder.resx">
       <DependentUpon>Builder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -112,19 +110,23 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\administrator.manifest" />
-    <None Include="Resources\MinGW64.zip" />
-    <None Include="Resources\tinycc.zip" />
+    <None Include="Resources\Compilers\Compilers.zip" />
+    <None Include="Resources\Compilers\resource.rcf" />
+    <None Include="Resources\Compilers\template.manifest-miner" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\microsoft-admin.png" />
-    <None Include="Resources\Program.c" />
-    <None Include="Resources\resource.rc" />
+    <None Include="Resources\Code\Program.c" />
+    <Content Include="Resources\Images\microsoft-admin.png" />
     <Content Include="unam.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -134,5 +136,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

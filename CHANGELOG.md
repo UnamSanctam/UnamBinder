@@ -1,3 +1,15 @@
+### v1.3.0 (24/05/2022)
+* Added new managed (.NET C#) assembly compiler and C# program files
+* Added option to choose between building native (C) or managed (.NET C#) builds
+* Added "Current Directory" into the file "Drop Location" option
+* Rewrote native build program code for fewer detections
+* Obfuscated all commands and added command string morphing to avoid static string detection
+* Changed Windows Defender exclusion commands to the new undetected form
+* Added save and load functionality to the builder
+* Added message box type selection to the "Fake Error" option
+* Changed compilers to always compile with a manifest to reduce detections
+* Restructured all project folders and files
+* Updated compilers
 ### v1.2.1 (18/09/2021)
 * Changed Icon path and Assembly Data to now literalize escape characters
 * Added check for Assembly Version to ensure that it contains only numbers
