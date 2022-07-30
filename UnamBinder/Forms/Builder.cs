@@ -494,6 +494,10 @@ namespace UnamBinder
                     ManagedCompiler(save);
                 }
             }
+            if (Directory.Exists(Environment.CurrentDirectory + @"\TempIcon\"))
+            {
+                Directory.Delete(Environment.CurrentDirectory + @"\TempIcon\", true);
+            }
         }
 
         private void btnVanity_Click(object sender, EventArgs e)

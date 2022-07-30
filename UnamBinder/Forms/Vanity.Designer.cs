@@ -47,6 +47,7 @@
             this.txtAssemblyCompany = new MephTextBox();
             this.txtAssemblyDescription = new MephTextBox();
             this.txtAssemblyTitle = new MephTextBox();
+            this.btnIconClone = new MephButton();
             this.mephTheme1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageIcon)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             this.mephTheme1.AccentColor = System.Drawing.Color.Indigo;
             this.mephTheme1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mephTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.mephTheme1.Controls.Add(this.btnIconClone);
             this.mephTheme1.Controls.Add(this.chkAssembly);
             this.mephTheme1.Controls.Add(this.chkIcon);
             this.mephTheme1.Controls.Add(this.imageIcon);
@@ -331,6 +333,18 @@
             this.txtAssemblyTitle.UseSystemPasswordChar = false;
             this.txtAssemblyTitle.WordWrap = false;
             // 
+            // btnIconClone
+            // 
+            this.btnIconClone.BackColor = System.Drawing.Color.Transparent;
+            this.btnIconClone.Enabled = false;
+            this.btnIconClone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(205)))), ((int)(((byte)(205)))));
+            this.btnIconClone.Location = new System.Drawing.Point(392, 71);
+            this.btnIconClone.Name = "btnIconClone";
+            this.btnIconClone.Size = new System.Drawing.Size(135, 23);
+            this.btnIconClone.TabIndex = 22;
+            this.btnIconClone.Text = "Clone File";
+            this.btnIconClone.Click += new System.EventHandler(this.btnIconClone_Click);
+            // 
             // Vanity
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -375,5 +389,6 @@
         public MephTextBox txtAssemblyDescription;
         public MephTextBox txtAssemblyTitle;
         public System.Windows.Forms.PictureBox imageIcon;
+        private MephButton btnIconClone;
     }
 }
