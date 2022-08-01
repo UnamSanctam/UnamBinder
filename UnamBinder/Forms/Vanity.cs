@@ -89,13 +89,20 @@ namespace UnamBinder
                 IconExtractor ie = new IconExtractor(dialog.FileName);
                 string savePath = Environment.CurrentDirectory + @"\TempIcon\icon.ico";
                 Directory.CreateDirectory(Environment.CurrentDirectory + @"\TempIcon\");
-                Icon icon1 = ie.GetIcon(0);
-                using (FileStream stream = new FileStream(savePath, FileMode.Create))
+                try
                 {
-                    icon1.Save(stream);
+                    Icon icon1 = ie.GetIcon(0);
+                    using (FileStream stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        icon1.Save(stream);
+                        txtIconPath.Text = savePath;
+                        imageIcon.ImageLocation = savePath;
+                    }
                 }
-                txtIconPath.Text = savePath;
-                imageIcon.ImageLocation = savePath;
+                catch
+                {
+                    MessageBox.Show("The icon is invalid. Try a different one!", "Invalid icon");
+                }
             }
         }
     }
