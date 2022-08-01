@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using TsudaKageyu;
+using System.Drawing;
 
 namespace UnamBinder
 {
@@ -36,6 +38,7 @@ namespace UnamBinder
         private void checkIcon_CheckedChanged(object sender)
         {
             btnIconBrowse.Enabled = chkIcon.Checked;
+            btnIconClone.Enabled = chkIcon.Checked;
             txtIconPath.Enabled = chkIcon.Checked;
         }
 
@@ -75,6 +78,31 @@ namespace UnamBinder
             {
                 txtIconPath.Text = dialog.FileName;
                 imageIcon.ImageLocation = dialog.FileName;
+            }
+        }
+        private void btnIconClone_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Executable Files (*.exe) |*.exe|Dynamic Link Library Files (*.dll)|*.dll";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                IconExtractor ie = new IconExtractor(dialog.FileName);
+                string savePath = Environment.CurrentDirectory + @"\TempIcon\icon.ico";
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\TempIcon\");
+                try
+                {
+                    Icon icon1 = ie.GetIcon(0);
+                    using (FileStream stream = new FileStream(savePath, FileMode.Create))
+                    {
+                        icon1.Save(stream);
+                        txtIconPath.Text = savePath;
+                        imageIcon.ImageLocation = savePath;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("The icon is invalid. Try a different one!", "Invalid icon");
+                }
             }
         }
     }
